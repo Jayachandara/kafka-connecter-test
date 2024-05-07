@@ -1,0 +1,48 @@
+Kafka Commands
+
+Start/Stop Zookeeper Server
+
+zookeeper-server-start.bat config\zookeeper.properties
+
+zookeeper-server-stop.bat config\zookeeper.properties
+
+D:\kafka_2.13-3.7.0>zookeeper-server-start.bat config\zookeeper.properties
+
+
+Start/Stop Kafka Server
+
+kafka-server-start.bat D:\kafka\config\server.properties
+
+kafka-server-stop.bat config\server.properties
+
+
+Create Topic
+
+--kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 -- partitions 1--topic topic-name
+
+kafka-topics.bat --bootstrap-server 127.0.0.1:9092 --create --topic test --partitions 3 --replication-factor 1
+
+
+List all Topics
+
+-- kafka-topics.bat --list --zookeeper localhost:2181
+
+kafka-topics.bat --list --bootstrap-server 127.0.0.1:9092
+
+Start Producer to Send Messages
+
+kafka-console-producer.bat --broker-list localhost:9092 -topic topic-name
+
+kafka-console-producer.bat --broker-list 127.0.0.1:9092 -topic Demo_User_Log_Activity
+
+Start Consumer to Receive Messages
+
+kafka-console-consumer.bat --zookeeper localhost:2181 --topic workflow2 --from-beginning
+
+kafka-console-consumer -bootstrap-server 127.0.0.1:9092 -topic kafkaConnector -group first_app
+
+
+
+kafka-connector
+===============
+connect-standalone.bat config/connect-standalone.properties config/postgres-sink-connect.properties
